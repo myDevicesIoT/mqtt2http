@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mqtt2http-config
+data:
+  PROXY_URL: "https://lora-az-prod-eastus.mydevices.com/v1/networks/iotinabox/uplink"
+  MQTT_USERNAME: "username"
+  MQTT_PASSWORD: "password"
+  MQTT_HOST: "mqtt.mydevices.com"
+  TOPIC: "/app/devices/#"
+  TOPIC_REGEX: "/\/d{15}/"

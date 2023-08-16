@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: watermonkey-bridge
+  labels:
+    app: watermonkey-bridge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: watermonkey-bridge
+  template:
+    metadata:
+      labels:
+        app: watermonkey-bridge
+    spec:
+      imagePullSecrets:
+        - name: pull-secret
+      containers:
+      - name: watermonkey-bridge-container
+        image: mydevices/mqtt2http:latest
+        envFrom: # Using all keys from a ConfigMap
+        - configMapRef:
+            name: mqtt2http-config
